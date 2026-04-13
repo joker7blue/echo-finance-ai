@@ -3,7 +3,7 @@ import type { Appearance } from "@clerk/types"
 export const darkClerkAppearance: Appearance = {
   baseTheme: undefined,
   variables: {
-    colorPrimary: "#8b5cf6",
+    colorPrimary: "#10b981",
     colorBackground: "#18181b",
     colorInputBackground: "#27272a",
     colorInputText: "#ffffff",
@@ -59,22 +59,22 @@ export const darkClerkAppearance: Appearance = {
         color: "#71717a",
       },
       "&:focus": {
-        borderColor: "#8b5cf6",
-        boxShadow: "0 0 0 3px rgb(139 92 246 / 0.1)",
+        borderColor: "#10b981",
+        boxShadow: "0 0 0 3px rgb(16 185 129 / 0.1)",
       },
     },
     formButtonPrimary: {
-      background: "linear-gradient(to right, #8b5cf6, #7c3aed)",
+      background: "linear-gradient(to right, #10b981, #059669)",
       color: "#ffffff",
       border: "none",
       "&:hover": {
-        background: "linear-gradient(to right, #7c3aed, #6d28d9)",
+        background: "linear-gradient(to right, #059669, #047857)",
       },
     },
     footerActionLink: {
-      color: "#a855f7",
+      color: "#10b981",
       "&:hover": {
-        color: "#c084fc",
+        color: "#34d399",
       },
     },
     footerActionText: {
