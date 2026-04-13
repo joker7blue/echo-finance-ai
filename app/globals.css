@@ -9,8 +9,8 @@
   --color-muted: #a1a1aa;
   
   /* Accent colors */
-  --color-accent-primary: #8b5cf6;
-  --color-accent-secondary: #06b6d4;
+  --color-accent-primary: #10b981;
+  --color-accent-secondary: #059669;
   
   /* Fonts */
   --font-sans: var(--font-geist-sans);
@@ -25,7 +25,8 @@
 }
 
 body {
-  background: var(--color-background);
+  background: linear-gradient(135deg, #09090b 0%, #0a1f1a 50%, #09090b 100%);
+  background-attachment: fixed;
   color: var(--color-foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
 }
@@ -51,7 +52,7 @@ body {
 
 /* Selection */
 ::selection {
-  background: rgba(139, 92, 246, 0.3);
+  background: rgba(16, 185, 129, 0.3);
 }
 
 /* Focus styles */
@@ -69,7 +70,7 @@ body {
 
 /* Gradient text utility */
 .gradient-text {
-  background: linear-gradient(to right, #8b5cf6, #06b6d4);
+  background: linear-gradient(to right, #10b981, #059669);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -77,11 +78,11 @@ body {
 
 /* Gradient button background */
 .gradient-button {
-  background: linear-gradient(to right, #7c3aed, #8b5cf6, #06b6d4);
+  background: linear-gradient(to right, #047857, #059669, #0d9488);
 }
 
 .gradient-button:hover {
-  background: linear-gradient(to right, #6d28d9, #7c3aed, #0891b2);
+  background: linear-gradient(to right, #065f46, #047857, #0f766e);
 }
 
 /* Animated gradient background */
@@ -95,7 +96,7 @@ body {
 }
 
 .animated-gradient {
-  background: linear-gradient(135deg, #7c3aed, #8b5cf6, #06b6d4, #8b5cf6);
+  background: linear-gradient(135deg, #059669, #10b981, #14b8a6, #10b981);
   background-size: 300% 300%;
   animation: gradient-shift 8s ease infinite;
 }
