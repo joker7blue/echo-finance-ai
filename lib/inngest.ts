@@ -1,3 +1,3 @@
 import { Inngest } from 'inngest'
 
-export const inngest = new Inngest({ id: 'echo-finance' })
+export const inngest = new Inngest({ id: 'echo-finance-ai' })
