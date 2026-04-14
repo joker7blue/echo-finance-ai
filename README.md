@@ -4,6 +4,18 @@ Record your expenses by voice. AI extracts the merchant, amount, and category au
 
 ---
 
+## App Screenshots
+
+<div align="center">
+  <img src="./public/app-images/home.png" alt="Home page" width="70%" style="border-radius: 1rem; box-shadow: 0 2px 16px #0002; margin-bottom: 2rem;" />
+  <div style="display: flex; gap: 2rem;">
+    <img src="./public/app-images/dashboard-1.png" alt="Dashboard - voice recording" width="49%" style="border-radius: 1rem; box-shadow: 0 2px 16px #0002; margin-bottom: 2rem;" />
+    <img src="./public/app-images/dashboard-2.png" alt="Dashboard - expenses table" width="49%" style="border-radius: 1rem; box-shadow: 0 2px 16px #0002; margin-bottom: 2rem;" />
+  </div>
+</div>
+
+---
+
 ## How it works
 
 1. Click the microphone and say something like *"Spent $12 at Starbucks and $45 on Amazon"*
