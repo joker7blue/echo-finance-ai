@@ -1,15 +1,19 @@
 'use client'
 
+import React from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 import { UserButton } from '@clerk/nextjs'
 import { VoiceRecorder } from '@/components/voice/VoiceRecorder'
-import { toast } from 'sonner'
+import { toast } from '@/components/ui/sonner'
 import { AILoadingIcon } from '@/components/icons/AILoadingIcon'
 import Link from 'next/link'
 import { ExpenseTable } from '@/components/shared/ExpenseTable'
+import { ErrorBoundary } from '@/components/shared/ErrorBoundary'
+import { ExpenseSummary } from '@/components/shared/ExpenseSummary'
 
 export default function DashboardPage() {
   const { user, isLoading } = useAuth()
+  const [refreshKey, setRefreshKey] = React.useState(0)
 
   const handleRecordingComplete = async (audioBlob: Blob) => {
     try {
@@ -24,13 +28,20 @@ export default function DashboardPage() {
       })
 
       if (!response.ok) {
-        const error = await response.json()
-        throw new Error(error.error || 'Failed to process recording')
+        let message = 'Failed to process recording'
+        try {
+          const error = await response.json()
+          message = error.error || message
+        } catch {
+          // Server returned non-JSON (HTML error page) — use default message
+        }
+        throw new Error(message)
       }
 
       const { expenseId } = await response.json()
       toast.success('Expense submitted! Processing with AI...')
       console.log('Expense created:', expenseId)
+      setRefreshKey((k) => k + 1)
     } catch (error) {
       console.error('Error submitting recording:', error)
       toast.error(
@@ -87,8 +98,19 @@ export default function DashboardPage() {
             <VoiceRecorder onRecordingComplete={handleRecordingComplete} />
           </div>
 
+          {/* Analytics Summary */}
+          {user?.id && (
+            <ErrorBoundary>
+              <ExpenseSummary userId={user.id} />
+            </ErrorBoundary>
+          )}
+
           {/* Expense Table */}
-          {user?.id && <ExpenseTable userId={user.id} />}
+          {user?.id && (
+            <ErrorBoundary>
+              <ExpenseTable userId={user.id} refreshKey={refreshKey} />
+            </ErrorBoundary>
+          )}
         </div>
       </main>
     </div>
