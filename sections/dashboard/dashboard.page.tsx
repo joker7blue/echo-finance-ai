@@ -6,6 +6,7 @@ import { VoiceRecorder } from '@/components/voice/VoiceRecorder'
 import { toast } from 'sonner'
 import { AILoadingIcon } from '@/components/icons/AILoadingIcon'
 import Link from 'next/link'
+import { ExpenseTable } from '@/components/shared/ExpenseTable'
 
 export default function DashboardPage() {
   const { user, isLoading } = useAuth()
@@ -86,15 +87,8 @@ export default function DashboardPage() {
             <VoiceRecorder onRecordingComplete={handleRecordingComplete} />
           </div>
 
-          {/* Expense List Placeholder */}
-          <div className="space-y-4">
-            <h2 className="text-2xl font-semibold">Recent Expenses</h2>
-            <div className="glass rounded-2xl p-8 text-center">
-              <p className="text-zinc-400">
-                No expenses yet. Start recording to add your first expense!
-              </p>
-            </div>
-          </div>
+          {/* Expense Table */}
+          {user?.id && <ExpenseTable userId={user.id} />}
         </div>
       </main>
     </div>
