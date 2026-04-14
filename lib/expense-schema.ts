@@ -6,8 +6,7 @@ export const expenseExtractionSchema = z.object({
     .describe("The merchant or store name where the expense occurred"),
   amount: z
     .number()
-    .positive()
-    .describe("The dollar amount of the expense"),
+    .describe("The dollar amount of the expense as a positive number"),
   category: z
     .enum([
       "food",
@@ -24,3 +23,11 @@ export const expenseExtractionSchema = z.object({
 });
 
 export type ExpenseExtraction = z.infer<typeof expenseExtractionSchema>;
+
+export const expensesArraySchema = z.object({
+  expenses: z
+    .array(expenseExtractionSchema)
+    .describe("All expenses mentioned in the transcription. Extract every single expense, even if multiple are mentioned in one sentence."),
+});
+
+export type ExpensesArray = z.infer<typeof expensesArraySchema>;
